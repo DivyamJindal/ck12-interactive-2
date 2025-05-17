@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4b0082;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.interactive-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    background-color: #ff9999;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 1s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: 2px solid #4b0082;
+}
+
+.dot {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #4b0082;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    z-index: 10;
+}
+
+.diameter-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.unfolded-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.diameter-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #4b0082;
+    transform: translateY(-50%);
+}
+
+.number-line-container {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-line {
+    position: relative;
+    width: 80%;
+    height: 4px;
+    background-color: #4b0082;
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+.tick {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    height: 10px;
+    background-color: #4b0082;
+    transform: translateY(-50%);
+}
+
+.tick span {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4b0082;
+}
+
+.tick-0 {
+    left: 0%;
+}
+
+.tick-1 {
+    left: 25%;
+}
+
+.tick-2 {
+    left: 50%;
+}
+
+.tick-3 {
+    left: 75%;
+}
+
+.tick-4 {
+    left: 100%;
+}
+
+.unwrapped-circle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    height: 8px;
+    width: 0;
+    background-color: #ff9999;
+    border: 2px solid #4b0082;
+    border-radius: 4px;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.pi-marker {
+    position: absolute;
+    top: -20px;
+    left: 78.5%; /* 3.14/4 * 100% */
+    width: 2px;
+    height: 20px;
+    background-color: #ff9999;
+    z-index: 10;
+}
+
+.pi-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff9999;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1rem;
+    background-color: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #6a0dad;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Animation classes */
+.shrink-animation {
+    animation: shrink 1s forwards;
+}
+
+@keyframes shrink {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.unwrap-animation {
+    animation: unwrap 2s forwards;
+}
+
+@keyframes unwrap {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 62.8%; /* 3.14 / 4 * 80% */
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .circle-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .number-line {
+        width: 90%;
+    }
+}
